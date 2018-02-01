@@ -85,7 +85,6 @@
                 <table>
                     <thead>
                         <tr>
-                            <td>Action</td>
                             <td>Title</td>
                             <td>Author</td>
                             <td>Price</td>
@@ -95,45 +94,35 @@
                     </thead>
 
                     <tbody>
-                        @foreach($books as $book)
+                      <form action="/sitdh/{{ $book->id }}/edit" method="POST">
+                        {{ method_field('PUT') }}
+                        {{ csrf_field() }}
                         <tr>
-                            <td><a href="/sitdh/{{ $book->id }}/delete">X</a></td>
-                            <td><a href="/sitdh/{{ $book->id }}">{{ $book->title }}</a></td>
-                            <td>{{ $book->author }}</td>
-                            <td>{{ $book->price }}</td>
-                            <td>{{ $book->publish_date }}</td>
-                            <td>{{ $book->website }}</td>
+                            <td>
+                                <input type="text" name="title" placeholder="Title" value="{{ $book->title }}">
+                            </td>
+                            <td>
+                                <input type="text" name="author" placholder="Author" value="{{ $book->author }}">
+                            </td>
+                            <td>
+                                <input type="text" name="price" placholder="Price" value="{{ $book->price }}">
+                            </td>
+                            <td>
+                                <input type="text" name="publish_date" placholder="Publish date" value="{{ $book->publish_date }}">
+                            </td>
+                            <td>
+                                <input type="text" name="website" placholder="Book website" value="{{ $book->website }}">
+                            </td>
                         </tr>
-                        @endforeach
-
-                        <form action="/sitdh" method="POST">
-                            {{ csrf_field() }}
-                            <tr>
-                                <td> &nbsp; </td>
-                                <td>
-                                    <input type="text" name="title" placeholder="Title">
-                                </td>
-                                <td>
-                                    <input type="text" name="author" placholder="Author">
-                                </td>
-                                <td>
-                                    <input type="text" name="price" placholder="Price">
-                                </td>
-                                <td>
-                                    <input type="text" name="publish_date" placholder="Publish date">
-                                </td>
-                                <td>
-                                    <input type="text" name="website" placholder="Book website">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td colspan="6"><input type="submit" value="ส่งข้อมูล"></td>
-                            </tr>
-                        </form>
+                        <tr>
+                            <td colspan="5"><input type="submit" value="ส่งข้อมูล"></td>
+                        </tr>
+                      </form>
                     </tbody>
                 </table>
             </div>
         </div>
     </body>
 </html>
+
 

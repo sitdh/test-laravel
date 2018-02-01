@@ -15,6 +15,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/sitdh', function() {
-    return view('sitdh.index');
-});
+Route::get('/sitdh', 'BookController@index');
+Route::post('/sitdh', 'BookController@store');
+Route::get('/sitdh/{book}', 'BookController@view');
+Route::put('/sitdh/{id}/edit', 'BookController@update');
+Route::get('/sitdh/{id}/delete', 'BookController@destroy');

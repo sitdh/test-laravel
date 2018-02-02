@@ -15,6 +15,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/posts', 'PostController@index');
+
 Route::get('/sitdh', 'BookController@index');
 Route::post('/sitdh', 'BookController@store');
 Route::get('/sitdh/{book}', 'BookController@view');
